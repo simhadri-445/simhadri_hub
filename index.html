@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simhadri Ittadi | Application Security Analyst</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle, #00f5ff22 10%, transparent 30%),
+                radial-gradient(circle, #00ff9520 10%, transparent 30%);
+            animation: moveBg 20s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes moveBg {
+            from {
+                transform: translate(-20%, -20%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-20%, -20%) rotate(360deg);
+            }
+        }
+
+        /* Navbar */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, .9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 10%;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #00f5ff;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #00f5ff;
+        }
+
+        .hero h2 {
+            margin: 15px 0;
+            color: #00ff95;
+        }
+
+        .hero p {
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #00f5ff, #00ff95);
+            color: #000;
+            font-weight: 600;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: .4s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px #00f5ff;
+        }
+
+        /* Sections */
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #00f5ff;
+            margin-bottom: 50px;
+        }
+
+        /* Glass Cards */
+
+        .skills-grid,
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card,
+        .project-card {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            transition: .4s;
+        }
+
+        .skill-card:hover,
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 245, 255, .4);
+        }
+
+        .skill-card h3,
+        .project-card h3 {
+            color: #00ff95;
+            margin-bottom: 15px;
+        }
+
+        /* Education */
+
+        #education .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* Certifications */
+
+        #certifications ul {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        #certifications li {
+            background: rgba(255, 255, 255, .05);
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        #certifications li:hover {
+            transform: translateX(10px);
+        }
+
+        /* Contact */
+
+        .contact-box {
+            text-align: center;
+            background: rgba(255, 255, 255, .05);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .contact-box a {
+            color: #00f5ff;
+            text-decoration: none;
+        }
+
+        /* Scroll Animation */
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #08111f;
+        }
+
+        /* Responsive */
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#training">Training</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Simhadri Ittadi</h1>
+
+            <h2 id="typing"></h2>
+
+            <p>
+                Aspiring Application Security Analyst with professional training in
+                Cybersecurity, Application Security, SAP, Oracle Fusion, and ServiceNow.
+                Passionate about vulnerability assessment, secure software practices,
+                security testing, and enterprise security solutions.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="Simhadri_Ittadi_Resume.pdf" target="_blank" class="btn">
+                    View Resume
+                </a>
+
+                <a href="Simhadri_Ittadi_Resume.pdf" download="Simhadri_Ittadi_Resume.pdf" class="btn">
+                    Download Resume
+                </a>
+            </div>
+
+    </section>
+
+    <section id="about" class="hidden">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p style="line-height:2;text-align:justify;">
+            I am a motivated Electronics and Communication Engineering student with
+            specialized training in Application Security and Cybersecurity through
+            the NASSCOM Application Security Analyst program. I possess practical
+            knowledge of application testing, security analysis, vulnerability
+            assessment, and secure software development practices.
+
+            Additionally, I have foundational knowledge of SAP, Oracle Fusion,
+            and ServiceNow platforms, enabling me to understand enterprise
+            applications and security requirements. I am passionate about learning,
+            problem-solving, and contributing to secure digital environments.
+
+        </p>
+
+    </section>
+
+    <section id="skills" class="hidden">
+
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>Cybersecurity</h3>
+                <p>Risk Analysis, Security Assessment, Security Fundamentals</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Application Security</h3>
+                <p>Application Testing, Vulnerability Assessment, OWASP Concepts</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>SAP Security</h3>
+                <p>Roles, Authorizations, Fiori Basics</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Oracle Fusion</h3>
+                <p>User Access Management & Security Concepts</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>ServiceNow</h3>
+                <p>ITSM Fundamentals & Incident Management</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <p>Python, Java, C, SQL</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Web Technologies</h3>
+                <p>HTML, CSS</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Soft Skills</h3>
+                <p>Leadership, Teamwork, Documentation, Communication</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="training" class="hidden">
+
+        <h2 class="section-title">Professional Training</h2>
+
+        <div class="project-card">
+            <h3>NASSCOM Application Security Analyst Training</h3>
+            <p>
+                Focused on application security testing, OWASP Top 10,
+                secure coding, vulnerability assessment, and risk analysis.
+            </p>
+        </div>
+
+        <br>
+
+        <div class="project-card">
+            <h3>Cybersecurity Training</h3>
+            <p>
+                Practical exposure to vulnerability identification,
+                security assessment, and enterprise security practices.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="projects" class="hidden">
+
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Branch Loan Application Security Testing</h3>
+                <p>
+                    Performed application testing using Python, SQL, and Burp Suite.
+                    Identified vulnerabilities and improved authentication controls.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Cybersecurity Internship Project</h3>
+                <p>
+                    Conducted security assessments and automated security tasks using scripts.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Java Full Stack Development Project</h3>
+                <p>
+                    Developed responsive modules and collaborated in team-based development.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="education" class="hidden">
+
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-grid">
+
+            <div class="project-card">
+                <h3>🎓 B.Tech – Electronics & Communication Engineering</h3>
+                <p><strong>Pace Institute of Technology and Sciences</strong><br>
+                Expected Graduation: 2026<br>
+                CGPA: <strong>7.6 / 10</strong></p>
+            </div>
+
+            <div class="project-card">
+                <h3>📘 Intermediate (MPC)</h3>
+                <p><strong>PNCA Junior College</strong><br>
+                Mathematics, Physics & Chemistry<br>
+                Completed Higher Secondary Education</p>
+            </div>
+
+            <div class="project-card">
+                <h3>🏫 SSC – Secondary School Certificate</h3>
+                <p><strong>ZP High School</strong><br>
+                Successfully completed secondary education</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="certifications" class="hidden">
+
+        <h2 class="section-title">Certifications</h2>
+
+        <ul>
+            <li>NASSCOM Application Security Analyst</li>
+            <li>ServiceNow Certification</li>
+            <li>Cybersecurity Fundamentals</li>
+            <li>Infosys Springboard Python Fundamentals</li>
+            <li>IIT Bombay Java Programming</li>
+            <li>NPTEL Joy of Computing Using Python</li>
+            <li>NPTEL Cloud Computing</li>
+        </ul>
+
+    </section>
+
+    <section id="contact" class="hidden">
+
+        <h2 class="section-title">Contact</h2>
+
+        <div class="contact-box">
+
+            <p>Email: simhadriittadi515@gmail.com</p>
+            <br>
+
+            <p>Phone: +91 9347042105</p>
+            <br>
+
+            <p>
+                GitHub:
+                <a href="https://github.com/Simhadriittadi" target="_blank">
+                    github.com/Simhadriittadi
+                </a>
+            </p>
+
+            <br>
+
+            <p>
+                LinkedIn:
+                <a href="https://linkedin.com/in/simhadri-ittadi-11369b2b7" target="_blank">
+                    linkedin.com/in/simhadri-ittadi-11369b2b7
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Simhadri Ittadi | Application Security Portfolio
+    </footer>
+
+    <script>
+
+        /* Typing Animation */
+
+        const text = "Application Security Analyst | Cybersecurity Enthusiast";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typing").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80);
+            }
+        }
+
+        typeWriter();
+
+        /* Scroll Animation */
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        });
+
+        document.querySelectorAll(".hidden").forEach((el) => {
+            observer.observe(el);
+        });
+
+    </script>
+
+</body>
+
+</html>
